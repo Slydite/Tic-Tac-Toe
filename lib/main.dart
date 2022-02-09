@@ -109,12 +109,12 @@ class _MyHomePageState extends State<MyHomePage> {
             backgroundColor: Colors.blue,
             title: Text(
               winner + " is the Winner!",
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
             actions: [
-              FlatButton(
-                child:
-                    Text("Play Again", style: TextStyle(color: Colors.white)),
+              TextButton(
+                child: const Text("Play Again",
+                    style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   _clearBoard();
                   Navigator.of(context).pop();
@@ -139,11 +139,11 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Colors.blue,
-            title: Text("Draw", style: TextStyle(color: Colors.white)),
+            title: const Text("Draw", style: TextStyle(color: Colors.white)),
             actions: [
-              FlatButton(
-                child:
-                    Text("Play Again", style: TextStyle(color: Colors.white)),
+              TextButton(
+                child: const Text("Play Again",
+                    style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   _clearBoard();
                   Navigator.of(context).pop();
@@ -183,22 +183,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(255, 235, 59, 4),
+        backgroundColor: const Color.fromRGBO(255, 235, 59, 4),
         body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.height,
-          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: <
-              Widget>[
-            SizedBox(
-              height: 40,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  IconButton(
-                      onPressed: _clearScoreBoard,
-                      icon: Icon(Icons.refresh, color: Colors.black, size: 40))
-                  /* PopupMenuButton<DifficultySelector>(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(
+                  height: 40,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      IconButton(
+                          onPressed: _clearScoreBoard,
+                          icon: const Icon(Icons.refresh,
+                              color: Colors.black, size: 40))
+                      /* PopupMenuButton<DifficultySelector>(
                       shape: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -266,139 +268,140 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ]),
                */
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    height: 80,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'X Wins',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.red[700],
-                                  ),
-                                ),
-                                Text(
-                                  xScore.toString(),
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.red[700],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        VerticalDivider(
-                          color: Colors.black,
-                          thickness: 2,
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Draws',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                Text(
-                                  drawScore.toString(),
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        VerticalDivider(
-                          color: Colors.black,
-                          thickness: 2,
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'O Wins',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blue[600],
-                                  ),
-                                ),
-                                Text(
-                                  oScore.toString(),
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blue[600],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    ],
                   ),
-                  SizedBox(height: 10),
-                  Flexible(
-                    child: GridView.builder(
-                        padding: EdgeInsets.all(1),
-                        shrinkWrap: true,
-                        itemCount: 9,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3),
-                        itemBuilder: (BuildContext context, int index) {
-                          return GestureDetector(
-                            onTap: () {
-                              _tapped(index);
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  border: Border.all(
-                                      color: Colors.black, width: 2)),
-                              child: Center(
-                                child: Text(marker[index],
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 60,
-                                        fontWeight: FontWeight.bold)),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 80,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'X Wins',
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red[700],
+                                      ),
+                                    ),
+                                    Text(
+                                      xScore.toString(),
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red[700],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                          );
-                        }),
+                            const VerticalDivider(
+                              color: Colors.black,
+                              thickness: 2,
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                      'Draws',
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      drawScore.toString(),
+                                      style: const TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const VerticalDivider(
+                              color: Colors.black,
+                              thickness: 2,
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'O Wins',
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blue[600],
+                                      ),
+                                    ),
+                                    Text(
+                                      oScore.toString(),
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blue[600],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Flexible(
+                        child: GridView.builder(
+                            padding: const EdgeInsets.all(1),
+                            shrinkWrap: true,
+                            itemCount: 9,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3),
+                            itemBuilder: (BuildContext context, int index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  _tapped(index);
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(4),
+                                      border: Border.all(
+                                          color: Colors.black, width: 2)),
+                                  child: Center(
+                                    child: Text(marker[index],
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 60,
+                                            fontWeight: FontWeight.bold)),
+                                  ),
+                                ),
+                              );
+                            }),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            )
-          ]),
+                )
+              ]),
         ),
       ),
     );
